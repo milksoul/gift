@@ -2,6 +2,9 @@
 
 namespace Modules\Gift\Http\Repositories;
 
+use App\Models\GiftBill;
+use App\Models\GiftWall;
+use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use JetBrains\PhpStorm\Pure;

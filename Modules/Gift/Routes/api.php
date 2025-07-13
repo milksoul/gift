@@ -14,13 +14,15 @@ use Illuminate\Routing\Router;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+// 不需要登录即可访问的接口
+$router->post('/login', [\Modules\Gift\Http\Controllers\AuthController::class, 'login']);
 
 Route::middleware(['auth.check'])->group(function (Router $router) {
     # 礼物列表
     # 赠送幸运礼物(按组赠送礼物)
     $router->post('/gift/givegroup',[Modules\Gift\Http\Controllers\GiftController::class, 'giveGroupGift']);
-
+    // 需要登录才能访问的接口
+    $router->post('/logout', [\Modules\Gift\Http\Controllers\AuthController::class, 'logout'])->middleware('auth.check');
 });
 
 
